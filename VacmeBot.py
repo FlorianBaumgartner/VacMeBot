@@ -23,7 +23,7 @@ while(True):
         driver = webdriver.Chrome(ChromeDriverManager().install(),
                                   chrome_options=options)
         driver.get(url)
-        time.sleep(2)     # Give some time to fully load content
+        time.sleep(2.5)     # Give some time to fully load content
         
         locations = driver.find_elements_by_class_name("ng-star-inserted")
         content = [location.text for location in locations]
@@ -33,6 +33,9 @@ while(True):
         loc = content[index - 1].splitlines()
         date = datetime.strptime(",".join(loc[1].split(", ")[1:]), '%B %d,%Y')
         print(f"\n\nWebsite updated: {date.strftime('%d.%m.%Y')}")
+        
+        with open("log.csv", 'a+') as f:
+            f.write(f"{time.time()};{date.strftime('%d.%m.%Y')}\n")
         
         if(oldDate != date):
             oldDate = date
