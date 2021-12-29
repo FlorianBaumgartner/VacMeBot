@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 url = "https://boostli.web.app/"
-date_threshold = "04.01.2022"
+date_threshold = "03.01.2022"
 target_location = "Impfzentrum MEDIN Biel – mRNA"
 sleep_time = 40
 
